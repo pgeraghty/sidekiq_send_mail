@@ -17,6 +17,7 @@ Add this line to your application's Gemfile:
 
 Add this line to a new initializer in your application:
 
+    # config/initializers/sidekiq_send_mail.rb
     ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor)
 
 Ensure Redis is running and your emails will now be queued via Sidekiq.
