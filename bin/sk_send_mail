@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+#$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+puts `bundle exec sidekiq -i 1 -r #{File.expand_path './lib/sidekiq_send_mail.rb'} -c 1 -t 20 -q emails -P sidekiq-emails.pid`
