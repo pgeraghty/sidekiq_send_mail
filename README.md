@@ -6,15 +6,15 @@ Other gems typically require you to render emails in background processes. This 
 
 If sending mail is the only thing you want to in the background then this gem is ideal for that purpose.
 
-Installation
-============
+## Installation
+
 Add this line to your application's Gemfile:
 
     gem 'sidekiq_mailer'
 
 
-Usage - ActionMailer Hooks
-==========================
+## Usage - ActionMailer Hooks
+
 Add this line to a new initializer in your application:
 
     ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor)
