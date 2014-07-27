@@ -7,7 +7,7 @@
 
 Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sent by a background process.
 
-Other gems typically require you to render emails in background processes. This requires you to load the whole Rails stack and your application plus dependencies. This is an alternative approach that reduces overhead by serializing via Mail::Message#to_yaml.
+Other gems typically require you to render emails in background processes. This requires you to load the whole Rails stack and your application plus dependencies. This is an alternative approach that reduces overhead by serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
 
 If sending mail is the only thing you want to in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
 
