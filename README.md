@@ -10,8 +10,9 @@ Other gems typically require you to render emails in background processes. This 
 If sending mail is the only thing you want to in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
 
 # Requirements
-SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4, but the ActionMailer component is automatically 
-skipped when not relevant so this gem can be used in combination with other frameworks.
+SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4. 
+The ActionMailer component is automatically skipped when not relevant so this gem can be 
+used in combination with other frameworks.
 
 Sidekiq requires [Redis](http://redis.io/) 2.4+.
 
