@@ -1,12 +1,19 @@
 # SidekiqSendMail
 
+[![Gem Version](https://badge.fury.io/rb/sidekiq_send_mail.svg)](http://badge.fury.io/rb/sidekiq_send_mail)
 [![Build Status](https://travis-ci.org/pgeraghty/sidekiq_send_mail.svg?branch=master)](https://travis-ci.org/pgeraghty/sidekiq_send_mail)
 
-Render mail and then send it to a Sidekiq queue to be sent by a background process.
+Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sent by a background process.
 
 Other gems typically require you to render emails in background processes. This requires you to load the whole Rails stack and your application plus dependencies. This is an alternative approach that reduces overhead by serializing via Mail::Message#to_yaml.
 
-If sending mail is the only thing you want to in the background then this gem is ideal for that purpose.
+If sending mail is the only thing you want to in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
+
+# Requirements
+SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4, but the ActionMailer component is automatically 
+skipped when not relevant so this gem can be used in combination with other frameworks.
+
+Sidekiq requires [Redis](http://redis.io/) 2.4+.
 
 ## Installation
 
@@ -15,8 +22,8 @@ Add this line to your application's Gemfile:
     gem 'sidekiq_mailer'
 
 
-## Usage - ActionMailer Hooks
-
+## Usage
+### ActionMailer Hooks
 Add this line to a new initializer in your application:
 
     # config/initializers/sidekiq_send_mail.rb
