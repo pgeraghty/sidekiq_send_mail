@@ -2,7 +2,7 @@ module SidekiqSendMail
   class MailInterceptor
     def self.delivering_email(message)
       unless deliver?(message)
-        Sidekiq::Client.push 'queue' => 'emails', 'class' => 'SidekiqSendMail::Worker', 'args' => [message.to_yaml]
+        SidekiqSendMail::Worker.perform_async message.to_yaml
         message.perform_deliveries = false
         puts "Mail routed to Sidekiq (#{message.subject})!"
       end

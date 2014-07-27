@@ -18,7 +18,7 @@ describe SidekiqSendMail do
     end
 
     expect {
-      Sidekiq::Client.push 'queue' => 'emails', 'class' => 'SidekiqSendMail::Worker', 'args' => [m.to_yaml]
+      SidekiqSendMail::Worker.perform_async m.to_yaml
     }.to change(SidekiqSendMail::Worker.jobs, :size).by(1)
   end
 
@@ -43,10 +43,22 @@ describe SidekiqSendMail do
     expect(Mail::TestMailer.deliveries.length).to eq 0
   end
 
+  it 'will allow worker options to be overridden' do
+    SidekiqSendMail::Worker.sidekiq_options queue: 'emails2'
+    expect {
+      UserMailer.welcome('user@example.com').deliver
+    }.to change { SidekiqSendMail::Worker.jobs.last['queue'] }.from('emails').to('emails2')
+  end
+
+  it 'will set a default retry delay' do
+    expect(SidekiqSendMail::Worker.sidekiq_retry_in_block.call).to eq 60 * 1440 * 30 # 30 days
+  end
+
   it 'will send mail when the queue is processed' do
     require 'sidekiq/cli' # usually only required if Sidekiq process is running
+    SidekiqSendMail::enable_worker!
     expect {
       SidekiqSendMail::Worker.drain
-    }.to change(Mail::TestMailer.deliveries, :length).by(2)
+    }.to change(Mail::TestMailer.deliveries, :length).by(3)
   end
 end
