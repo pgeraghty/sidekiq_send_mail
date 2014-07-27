@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'sidekiq'
 
 require 'sidekiq/testing'
