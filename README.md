@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/sidekiq_send_mail.svg)](http://badge.fury.io/rb/sidekiq_send_mail)
 [![Build Status](https://travis-ci.org/pgeraghty/sidekiq_send_mail.svg?branch=master)](https://travis-ci.org/pgeraghty/sidekiq_send_mail)
 [![Coverage Status](https://img.shields.io/coveralls/pgeraghty/sidekiq_send_mail.svg)](https://coveralls.io/r/pgeraghty/sidekiq_send_mail?branch=master)
+[![Code Climate](https://codeclimate.com/github/pgeraghty/sidekiq_send_mail.png)](https://codeclimate.com/github/pgeraghty/sidekiq_send_mail)
 
 Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sent by a background process.
 
