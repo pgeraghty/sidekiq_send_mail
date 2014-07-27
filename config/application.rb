@@ -7,13 +7,10 @@ Bundler.require :default, ENV['RACK_ENV'] if defined?(Bundler) #unless $0 == 'ir
 require 'sidekiq'
 
 # check if running inside Sidekiq worker process
-load_workers = defined?(Sidekiq::CLI) || defined?(Sidekiq::Testing) ? true : false
+load_workers = !!defined?(Sidekiq::CLI)
 
 puts "SidekiqSendMail - check if should load worker - #{load_workers}"
-if load_workers
-  require 'mail'
-  Dir[File.expand_path('../../app/**/*.rb', __FILE__)].each { |f| require f }
-end
+SidekiqSendMail::enable_worker! if load_workers
 
 if defined?(ActionMailer)
   require File.expand_path('../../lib/mail_interceptor.rb', __FILE__)
