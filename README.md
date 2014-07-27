@@ -21,7 +21,7 @@ Sidekiq requires [Redis](http://redis.io/) 2.4+.
 
 Add this line to your application's Gemfile:
 
-    gem 'sidekiq_mailer'
+    gem 'sidekiq_send_mail'
 
 
 ## Usage
