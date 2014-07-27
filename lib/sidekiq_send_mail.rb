@@ -17,3 +17,14 @@ module SidekiqSendMail
     Dir[File.expand_path('../../app/**/*.rb', __FILE__)].each { |f| require f }
   end
 end
+
+# check if running inside Sidekiq worker process
+load_workers = !!defined?(Sidekiq::CLI)
+
+puts "SidekiqSendMail - check if should load worker - #{load_workers}"
+SidekiqSendMail::enable_worker! if load_workers
+
+if defined?(ActionMailer)
+  require File.expand_path('../../lib/mail_interceptor.rb', __FILE__)
+end
+

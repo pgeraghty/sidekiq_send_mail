@@ -9,7 +9,7 @@ Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sen
 
 Other gems typically require you to render emails in background processes. This requires you to load the whole Rails stack and your application plus dependencies. This is an alternative approach that reduces overhead by serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
 
-If sending mail is the only thing you want to in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
+If sending mail is the only thing you want to do in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
 
 # Requirements
 SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4. 
@@ -30,7 +30,7 @@ Run Bundler to install the gem:
 
 
 ## Usage
-### ActionMailer Hooks
+### Rails (via ActionMailer Hooks)
 Add this line to a new initializer in your application:
 
     # config/initializers/sidekiq_send_mail.rb
@@ -41,7 +41,21 @@ Ensure Redis is running and your emails will now be queued via Sidekiq.
 To perform this only in production/staging, you can use:
 
     ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor) if %w(staging production).include?(Rails.env)
+
+### Starting Sidekiq
+To actually send the emails you've queued, you need to start Sidekiq. 
+An executable is provided with this gem for basic operation, open a terminal and execute:
+
+    sk_send_mail
     
+This initiates a barebones Sidekiq process bound to the 'emails' queue with a concurrency of 1 and a shutdown timeout of 20s.
+
+To shut down this process, you use the command:
+
+    sidekiqctl shutdown /tmp/sidekiq-emails.pid
+
+See the [source](https://github.com/pgeraghty/sidekiq_send_mail/blob/master/bin/sk_send_mail) or the 
+[Sidekiq wiki](https://github.com/mperham/sidekiq/wiki/Advanced-Options) for more information.
 ## Contributing
 
 1. Fork it
