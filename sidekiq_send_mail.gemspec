@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = 'muse@appsthatcould.be'
   s.homepage    = 'https://github.com/pgeraghty/sidekiq_send_mail'
   s.summary     = 'SidekiqSendMail'
-  s.description = 'Render mail and then send it to a Sidekiq queue to be sent by a background process.'
+  s.description = 'Render mail, serialize it and then send it to a Sidekiq queue for dispatch by a background process.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,bin,config,lib,test}/**/*'] + %w(Gemfile Rakefile sidekiq_send_mail.gemspec) # MIT-LICENSE Rakefile README.md
