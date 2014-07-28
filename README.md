@@ -12,6 +12,8 @@ Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sen
   stack and your application plus dependencies. This is an alternative approach that reduces overhead by 
   serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
 
+* One SidekiqSendMail process can serve many applications, you do not need one for each.
+
 * If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and 
   provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
 
