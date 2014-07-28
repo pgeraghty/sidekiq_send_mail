@@ -7,7 +7,7 @@
 
 #### Render mail, serialize it and then send it to a [Sidekiq](http://sidekiq.org/) queue for dispatch by a background process.
 
-# Why use this?
+## Why use this?
 * Other gems typically require you to render emails in background processes. This requires you to load the whole Rails 
   stack and your application plus dependencies. This is an alternative approach that reduces overhead by 
   serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
@@ -19,7 +19,7 @@
 
 If sending mail is the only thing you want to do in the background then this gem is ideal for that purpose. 
 
-# Requirements
+## Requirements
 SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4. 
 The ActionMailer component is automatically skipped when not relevant so this gem can be 
 used in combination with other frameworks.
@@ -72,6 +72,7 @@ sidekiqctl shutdown /tmp/sidekiq-emails.pid
 
 See the [source](https://github.com/pgeraghty/sidekiq_send_mail/blob/master/bin/sk_send_mail) or the 
 [Sidekiq wiki](https://github.com/mperham/sidekiq/wiki/Advanced-Options) for more information.
+
 ## Contributing
 
 1. Fork it
@@ -79,3 +80,7 @@ See the [source](https://github.com/pgeraghty/sidekiq_send_mail/blob/master/bin/
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## License
+
+MIT: [http://pg.mit-license.org](http://pg.mit-license.org)
