@@ -27,37 +27,46 @@ Sidekiq requires [Redis](http://redis.io/) 2.4+.
 ## Installation
 
 Add this line to your application's Gemfile:
-
-    gem 'sidekiq_send_mail'
+```ruby   
+gem 'sidekiq_send_mail'
+```
     
 Run Bundler to install the gem:
-   
-    bundle install
-
+```console   
+bundle install
+```
 
 ## Usage
 ### Rails (via ActionMailer Hooks)
 Create a new initializer `config/initializers/sidekiq_send_mail.rb`  in your application containing:
 
-    ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor)
+```ruby
+ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor)
+```
 
 Ensure Redis is running and your emails will now be queued via Sidekiq.
 
 To perform this only in production/staging, you can use:
 
-    ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor) if %w(staging production).include?(Rails.env)
+```ruby
+ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor) if %w(staging production).include?(Rails.env)
+```
 
 ### Starting Sidekiq
 To actually send the emails you've queued, you need to start Sidekiq. 
 An executable is provided with this gem for basic operation, open a terminal and execute:
 
-    sk_send_mail
+```console  
+sk_send_mail
+```
     
 This initiates a barebones Sidekiq process bound to the 'emails' queue with a concurrency of 1 and a shutdown timeout of 20s.
 
 To shut down this process, you use the command:
 
-    sidekiqctl shutdown /tmp/sidekiq-emails.pid
+```console
+sidekiqctl shutdown /tmp/sidekiq-emails.pid
+```
 
 See the [source](https://github.com/pgeraghty/sidekiq_send_mail/blob/master/bin/sk_send_mail) or the 
 [Sidekiq wiki](https://github.com/mperham/sidekiq/wiki/Advanced-Options) for more information.
