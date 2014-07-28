@@ -5,7 +5,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/pgeraghty/sidekiq_send_mail.svg)](https://coveralls.io/r/pgeraghty/sidekiq_send_mail?branch=master)
 [![Code Climate](https://codeclimate.com/github/pgeraghty/sidekiq_send_mail.png)](https://codeclimate.com/github/pgeraghty/sidekiq_send_mail)
 
-### Render mail, serialize it and then send it to a [Sidekiq](http://sidekiq.org/) queue for dispatch by a background process.
+#### Render mail, serialize it and then send it to a [Sidekiq](http://sidekiq.org/) queue for dispatch by a background process.
 
 # Why use this?
 * Other gems typically require you to render emails in background processes. This requires you to load the whole Rails 
