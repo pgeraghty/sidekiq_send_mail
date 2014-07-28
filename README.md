@@ -7,9 +7,15 @@
 
 Render mail and then send it to a [Sidekiq](http://sidekiq.org/) queue to be sent by a background process.
 
-Other gems typically require you to render emails in background processes. This requires you to load the whole Rails stack and your application plus dependencies. This is an alternative approach that reduces overhead by serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
+# Why use this?
+* Other gems typically require you to render emails in background processes. This requires you to load the whole Rails 
+  stack and your application plus dependencies. This is an alternative approach that reduces overhead by 
+  serializing via [Mail::Message#to_yaml](https://github.com/mikel/mail/blob/master/lib/mail/message.rb#L1828).
 
-If sending mail is the only thing you want to do in the background then this gem is ideal for that purpose. If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
+* If you'd like to add fault tolerance and be able to see failures and retry emails, Sidekiq has these features and 
+  provides a neat [web interface](https://github.com/mperham/sidekiq/wiki/Monitoring).
+
+If sending mail is the only thing you want to do in the background then this gem is ideal for that purpose. 
 
 # Requirements
 SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4. 
@@ -31,9 +37,8 @@ Run Bundler to install the gem:
 
 ## Usage
 ### Rails (via ActionMailer Hooks)
-Add this line to a new initializer in your application:
+Create a new initializer `config/initializers/sidekiq_send_mail.rb`  in your application containing:
 
-    # config/initializers/sidekiq_send_mail.rb
     ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor)
 
 Ensure Redis is running and your emails will now be queued via Sidekiq.
