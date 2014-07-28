@@ -32,7 +32,7 @@ gem 'sidekiq_send_mail'
 ```
     
 Run Bundler to install the gem:
-```console   
+```shell   
 bundle install
 ```
 
@@ -56,7 +56,7 @@ ActionMailer::Base.register_interceptor(SidekiqSendMail::MailInterceptor) if %w(
 To actually send the emails you've queued, you need to start Sidekiq. 
 An executable is provided with this gem for basic operation, open a terminal and execute:
 
-```console  
+```shell  
 sk_send_mail
 ```
     
@@ -64,7 +64,7 @@ This initiates a barebones Sidekiq process bound to the 'emails' queue with a co
 
 To shut down this process, you use the command:
 
-```console
+```shell
 sidekiqctl shutdown /tmp/sidekiq-emails.pid
 ```
 
