@@ -83,4 +83,4 @@ See the [source](https://github.com/pgeraghty/sidekiq_send_mail/blob/master/bin/
 
 ## License
 
-MIT: [http://pg.mit-license.org](http://pg.mit-license.org)
+MIT: <http://pg.mit-license.org>
