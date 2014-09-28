@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables << 'sk_send_mail'
 
   s.add_dependency 'sidekiq', '>= 3.0', '< 3.3'
-  s.add_dependency 'mail', '>= 2.5.4', '< 2.7'
+  s.add_dependency 'mail', '>= 2.4', '< 2.7'
 
   s.add_development_dependency 'rake', '>= 0'
   s.add_development_dependency 'rspec', '>= 0'
