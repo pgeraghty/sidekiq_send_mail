@@ -12,7 +12,7 @@ else
         when 'default'
           '>= 3.2'
         else
-          "~> #{rails_version}"
+          rails_version
       end
 
   gem 'actionmailer', rails
@@ -26,7 +26,7 @@ sidekiq = case sidekiq_version
           when 'default'
             ['>= 3.0', '< 3.3']
           else
-            "~> #{sidekiq_version}"
+            sidekiq_version
         end
 
 gem 'sidekiq', sidekiq
