@@ -4,13 +4,30 @@ gemspec
 
 rails_version = ENV['RAILS_VERSION'] || 'default'
 
-rails = case rails_version
+if rails_version == 'master'
+  gem 'rails', github: 'rails/rails'
+else
+  rails =
+      case rails_version
+        when 'default'
+          '>= 3.2'
+        else
+          "~> #{rails_version}"
+      end
+
+  gem 'actionmailer', rails
+end
+
+sidekiq_version = ENV['SIDEKIQ_VERSION'] || 'default'
+
+sidekiq = case sidekiq_version
           when 'master'
-            {github: 'rails/actionmailer'}
+            {github: 'mperham/sidekiq'}
           when 'default'
-            '>= 3.2'
+            ['>= 3.0', '< 3.3']
           else
-            "~> #{rails_version}"
+            "~> #{sidekiq_version}"
         end
 
-gem 'actionmailer', rails
+gem 'sidekiq', sidekiq
+

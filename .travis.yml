@@ -1,6 +1,5 @@
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.2
   - 2.2.0
@@ -15,6 +14,14 @@ env:
   - "RAILS_VERSION=4.2.0.beta1"
   - "RAILS_VERSION=master"
 matrix:
+  fast_finish: true
   allow_failures:
     - env: "RAILS_VERSION=master"
     - rvm: ruby-head
+  include:
+    - rvm: 1.9.3
+      env: RAILS_VERSION=3.2.19 SIDEKIQ_VERSION=3.2.1
+    - rvm: 1.9.3
+      env: RAILS_VERSION=4.0.10 SIDEKIQ_VERSION=3.2.1
+    - rvm: 1.9.3
+      env: RAILS_VERSION=4.1.6 SIDEKIQ_VERSION=3.2.1
