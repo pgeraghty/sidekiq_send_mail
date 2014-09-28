@@ -21,11 +21,12 @@
 If sending mail is the only thing you want to do in the background then this gem is ideal for that purpose. 
 
 ## Requirements
-SidekiqSendMail has been tested with the latest MRI (2.1.2, 2.0.0) under Rails 3 &amp; 4. 
+SidekiqSendMail is tested under a [wide range of Ruby and Rails configurations](https://travis-ci.org/pgeraghty/sidekiq_send_mail).
 The ActionMailer component is automatically skipped when not relevant so this gem can be 
 used in combination with other frameworks.
 
 Sidekiq requires [Redis](http://redis.io/) 2.4+.
+Sidekiq versions after 3.2.1 no longer support Ruby 1.9.3.
 
 ## Installation
 
