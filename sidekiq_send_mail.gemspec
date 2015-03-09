@@ -4,7 +4,7 @@ $:.push File.expand_path('../lib', __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = 'sidekiq_send_mail'
-  s.version     = '0.1.2'
+  s.version     = '0.1.3'
   s.authors     = ['Paul Geraghty']
   s.email       = 'muse@appsthatcould.be'
   s.homepage    = 'https://github.com/pgeraghty/sidekiq_send_mail'
