@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   #s.test_files = Dir['spec/**/*']
   s.executables << 'sk_send_mail'
 
-  s.add_dependency 'sidekiq', '>= 3.0', '< 3.4'
+  s.add_dependency 'sidekiq', '>= 3.0'
   s.add_dependency 'mail', '>= 2.4', '< 2.7'
 
   s.add_development_dependency 'rake', '>= 0'

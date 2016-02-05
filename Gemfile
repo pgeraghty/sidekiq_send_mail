@@ -24,7 +24,7 @@ sidekiq = case sidekiq_version
           when 'master'
             {github: 'mperham/sidekiq'}
           when 'default'
-            ['>= 3.0', '< 3.4']
+            ['>= 4.0']
           else
             sidekiq_version
         end
