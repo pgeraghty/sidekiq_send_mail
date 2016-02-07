@@ -11,8 +11,8 @@ env:
   - "RAILS_VERSION=3.2.1"
   - "RAILS_VERSION=3.2.22.1"
   - "RAILS_VERSION=4.0.13"
-  - "RAILS_VERSION=4.1.14.1"
-  - "RAILS_VERSION=4.2.5.1"
+  - "RAILS_VERSION=4.1.14"
+  - "RAILS_VERSION=4.2.5"
   - "RAILS_VERSION=master"
 matrix:
   allow_failures:
